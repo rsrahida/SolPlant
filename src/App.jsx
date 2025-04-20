@@ -5,6 +5,7 @@ import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import Navbar from "./shared/Navbar/Navbar";
+import HomePage from "./pages/HomePage";
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<ProductsPage />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/products" element={<ProductsPage />}></Route>
           <Route path="/registration" element={<RegistrationPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/dashboard" element={<DashboardPage />}></Route>

@@ -18,6 +18,14 @@ const Navbar = () => {
             location.pathname === "/" ? styles.active : ""
           }`}
         >
+          Home
+        </Link>
+        <Link
+          to="/products"
+          className={`${styles.link} ${
+            location.pathname === "/products" ? styles.active : ""
+          }`}
+        >
           Products
         </Link>
         <Link

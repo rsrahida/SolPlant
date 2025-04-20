@@ -27,7 +27,6 @@ const Products = () => {
 
   useEffect(() => {
     fetchProducts();
-    ik;
   }, []);
 
   useEffect(() => {
@@ -179,7 +178,6 @@ const Products = () => {
           </div>
         </div>
       </div>
-
       <div className={styles.productGrid}>
         {filtered.length > 0 ? (
           filtered.map((p) => (
