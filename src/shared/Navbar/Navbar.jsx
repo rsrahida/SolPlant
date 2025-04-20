@@ -46,7 +46,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={styles.navbarEnd}>
-        <i className="fa-solid fa-circle-user" style={{ color: "#1F7A54" }}>.......</i>
+        <i className="fa-solid fa-circle-user" style={{ color: "black" }}>
+          ..........
+        </i>
       </div>
     </div>
   );
