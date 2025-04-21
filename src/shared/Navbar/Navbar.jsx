@@ -2,9 +2,11 @@ import React from "react";
 import styles from "./Navbar.module.css";
 import Logo from "../../assets/images/logo.png";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const location = useLocation();
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <div className={styles.navbar}>
@@ -54,8 +56,11 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={styles.navbarEnd}>
-        <i className="fa-solid fa-circle-user" style={{ color: "black" }}>
-          ..........
+        <i
+          className="fa-solid fa-circle-user"
+          style={{ color: "black", fontSize: "20px" }}
+        >
+          <span className={styles.name}>&nbsp;{user ? user.username : ""}</span>
         </i>
       </div>
     </div>
