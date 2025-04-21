@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../features/auth/authSlice";
 import styles from "./Registration.module.css";
 import { useNavigate } from "react-router-dom";
+import Image from "../../assets/images/botanical-green-leaf-png.webp";
 
 const Registration = () => {
   const dispatch = useDispatch();
@@ -79,76 +80,79 @@ const Registration = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleRegister}>
-      <input
-        className={styles.input}
-        name="username"
-        type="text"
-        value={formData.username}
-        onChange={handleChange}
-        placeholder="Username"
-      />
-      {errors.username && <p className={styles.error}>{errors.username}</p>}
+    <div className={styles.formContainer}>
+      <img src={Image} className={styles.image} />
+      <form className={styles.form} onSubmit={handleRegister}>
+      <h2>Registration</h2>
+        <input
+          className={styles.input}
+          name="username"
+          type="text"
+          value={formData.username}
+          onChange={handleChange}
+          placeholder="Username"
+        />
+        {errors.username && <p className={styles.error}>{errors.username}</p>}
 
-      <input
-        className={styles.input}
-        name="email"
-        type="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="Email"
-      />
-      {errors.email && <p className={styles.error}>{errors.email}</p>}
+        <input
+          className={styles.input}
+          name="age"
+          type="number"
+          value={formData.age}
+          onChange={handleChange}
+          placeholder="Age"
+        />
+        {errors.age && <p className={styles.error}>{errors.age}</p>}
 
-      <input
-        className={styles.input}
-        name="password"
-        type="password"
-        value={formData.password}
-        onChange={handleChange}
-        placeholder="Password"
-      />
-      {errors.password && <p className={styles.error}>{errors.password}</p>}
+        <input
+          className={styles.input}
+          name="phone"
+          type="tel"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="Phone"
+        />
+        {errors.phone && <p className={styles.error}>{errors.phone}</p>}
 
-      <input
-        className={styles.input}
-        name="confirmPassword"
-        type="password"
-        value={formData.confirmPassword}
-        onChange={handleChange}
-        placeholder="Confirm Password"
-      />
-      {errors.confirmPassword && (
-        <p className={styles.error}>{errors.confirmPassword}</p>
-      )}
+        <input
+          className={styles.input}
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email"
+        />
+        {errors.email && <p className={styles.error}>{errors.email}</p>}
 
-      <input
-        className={styles.input}
-        name="age"
-        type="number"
-        value={formData.age}
-        onChange={handleChange}
-        placeholder="Age"
-      />
-      {errors.age && <p className={styles.error}>{errors.age}</p>}
+        <input
+          className={styles.input}
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="Password"
+        />
+        {errors.password && <p className={styles.error}>{errors.password}</p>}
 
-      <input
-        className={styles.input}
-        name="phone"
-        type="tel"
-        value={formData.phone}
-        onChange={handleChange}
-        placeholder="Phone"
-      />
-      {errors.phone && <p className={styles.error}>{errors.phone}</p>}
+        <input
+          className={styles.input}
+          name="confirmPassword"
+          type="password"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          placeholder="Confirm Password"
+        />
+        {errors.confirmPassword && (
+          <p className={styles.error}>{errors.confirmPassword}</p>
+        )}
 
-      {/* Register səhvini yalnız qeydiyyat səhifəsində göstəririk */}
-      {registerError && <p className={styles.error}>{registerError}</p>}
+        {registerError && <p className={styles.error}>{registerError}</p>}
 
-      <button className={styles.button} type="submit" disabled={loading}>
-        {loading ? "Registering..." : "Register"}
-      </button>
-    </form>
+        <button className={styles.button} type="submit" disabled={loading}>
+          {loading ? "Registering..." : "Register"}
+        </button>
+      </form>
+    </div>
   );
 };
 

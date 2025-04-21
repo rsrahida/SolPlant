@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../features/auth/authSlice";
 import styles from "./Login.module.css";
+import Image from "../../assets/images/botanical-green-leaf-png.webp";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -42,37 +43,40 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-      <h2>Login</h2>
-      <input
-        className={styles.input}
-        name="email"
-        type="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="Email"
-      />
-      {errors.email && <p className={styles.error}>{errors.email}</p>}
+     <img src={Image} className={styles.image} />
+      <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <h2>Login</h2>
 
-      <input
-        className={styles.input}
-        name="password"
-        type="password"
-        value={formData.password}
-        onChange={handleChange}
-        placeholder="Password"
-      />
-      {errors.password && <p className={styles.error}>{errors.password}</p>}
+        <input
+          className={styles.input}
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email"
+        />
+        {errors.email && <p className={styles.error}>{errors.email}</p>}
 
-      {/* Login səhvini yalnız login səhifəsində göstəririk */}
-      {loginError && <p className={styles.error}>{loginError}</p>}
+        <input
+          className={styles.input}
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="Password"
+        />
+        {errors.password && <p className={styles.error}>{errors.password}</p>}
 
-      <button
-        className={styles.button}
-        onClick={handleLogin}
-        disabled={loading}
-      >
-        {loading ? "Logging in..." : "Login"}
-      </button>
+        {loginError && <p className={styles.error}>{loginError}</p>}
+
+        <button
+          className={styles.button}
+          onClick={handleLogin}
+          disabled={loading}
+        >
+          {loading ? "Logging in..." : "Login"}
+        </button>
+      </form>
     </div>
   );
 };
