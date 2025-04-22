@@ -1,9 +1,8 @@
-// src/features/auth/authSlice.js
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { supabase } from "../../lib/client";
 
-// User login action
-// User login action
+//!Login
+
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userData, { rejectWithValue }) => {
@@ -14,14 +13,14 @@ export const loginUser = createAsyncThunk(
       });
 
       if (error) {
-        // Supabase adətən "Invalid login credentials" deyir
         if (error.message.toLowerCase().includes("invalid login credentials")) {
           return rejectWithValue("Invalid email or password");
         }
         return rejectWithValue(error.message);
       }
 
-      // Fetch username from profiles table
+      //!İstifadəçi login olduqdan sonra,onun usernamesini supabasedən almaq
+
       const { data: profile, error: profileError } = await supabase
         .from("profiles")
         .select("username")
@@ -32,7 +31,6 @@ export const loginUser = createAsyncThunk(
         return rejectWithValue(profileError.message);
       }
 
-      // Return enriched user
       return {
         user: { ...data.user, username: profile.username },
         session: data.session,
@@ -43,26 +41,27 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-// User registration action
+//!Register
+
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData, { rejectWithValue }) => {
     try {
-      const { data, error } = await supabase.auth.signUp({
+      let { data, error } = await supabase.auth.signUp({
         email: userData.email,
         password: userData.password,
       });
 
       if (error) {
-        // Emailin artıq mövcud olduğu halda xüsusi səhv mesajı
         if (error.message.includes("User already registered")) {
-          return rejectWithValue("Bu email artıq mövcuddur");
+          return rejectWithValue("This email already exists");
         }
         return rejectWithValue(error.message);
       }
 
+      //! Profile cədvəlinə məlumat əlavə etmək
+
       if (data) {
-        // Profile cədvəlinə məlumat əlavə et
         await supabase.from("profiles").insert([
           {
             id: data.user.id,
@@ -80,23 +79,21 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-// Slice to handle auth state
-// Slice to handle auth state
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null,
     session: null,
     loading: false,
-    loginError: null, // Login səhvləri üçün xüsusi state
-    registerError: null, // Register səhvləri üçün xüsusi state
+    loginError: null,
+    registerError: null,
   },
   reducers: {
     logout: (state) => {
-      state.user = null;
-      state.session = null;
-      state.loginError = null;
-      state.registerError = null;
+      (state.user = null),
+        (state.session = null),
+        (state.loginError = null),
+        (state.registerError = null);
     },
   },
   extraReducers: (builder) => {
@@ -108,11 +105,11 @@ const authSlice = createSlice({
         state.loading = false;
         state.user = action.payload.user;
         state.session = action.payload.session;
-        state.loginError = null; // Login uğurlu olarsa, səhv sıfırlanır
+        state.loginError = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
-        state.loginError = action.payload; // Login səhvini saxlayırıq
+        state.loginError = action.payload;
       })
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
@@ -121,15 +118,14 @@ const authSlice = createSlice({
         state.loading = false;
         state.user = action.payload.user;
         state.session = action.payload.session;
-        state.registerError = null; // Register uğurlu olarsa, səhv sıfırlanır
+        state.registerError = null;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
-        state.registerError = action.payload; // Register səhvini saxlayırıq
+        state.registerError = action.payload;
       });
   },
 });
 
 export const { logout } = authSlice.actions;
-
 export default authSlice.reducer;
