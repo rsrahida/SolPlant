@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../features/auth/authSlice";
 import styles from "./Login.module.css";
-import Image from "../../assets/images/botanical-green-leaf-png.webp";
+import LeafBackground from "../../components/Background/LeafBackground";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -13,10 +13,8 @@ const Login = () => {
   const validate = () => {
     const errors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (!formData.email) errors.email = "Email is required";
     else if (!emailRegex.test(formData.email)) errors.email = "Invalid email";
-
     if (!formData.password) errors.password = "Password is required";
 
     return errors;
@@ -29,21 +27,19 @@ const Login = () => {
   const handleLogin = async () => {
     const validationErrors = validate();
     setErrors(validationErrors);
-
     if (Object.keys(validationErrors).length > 0) return;
-
     await dispatch(loginUser(formData))
       .unwrap()
       .then(() => {
         setFormData({ email: "", password: "" });
         alert("Logged in successfully!");
       })
-      .catch(() => {}); // Error artıq loginError ilə handle olunur
+      .catch(() => {});
   };
 
   return (
     <div className={styles.container}>
-     <img src={Image} className={styles.image} />
+      <LeafBackground />
       <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
         <h2>Login</h2>
 
