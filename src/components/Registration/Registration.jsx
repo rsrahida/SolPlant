@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../features/auth/authSlice";
 import styles from "./Registration.module.css";
-import { useNavigate } from "react-router-dom";
-import Image from "../../assets/images/botanical-green-leaf-png.webp";
+import LeafBackground from "../../components/Background/LeafBackground";
 
 const Registration = () => {
   const dispatch = useDispatch();
-  const { loading, registerError } = useSelector((state) => state.auth); // registerError
   const navigate = useNavigate();
+  const { loading, registerError } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
     username: "",
+    age: "",
+    phone: "",
     email: "",
     password: "",
     confirmPassword: "",
-    age: "",
-    phone: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -31,17 +31,13 @@ const Registration = () => {
     if (!formData.email) errors.email = "Email is required";
     else if (!emailRegex.test(formData.email))
       errors.email = "Invalid email format";
-
     if (!formData.password) errors.password = "Password is required";
     else if (formData.password.length < 8)
       errors.password = "Password must be at least 8 characters long";
-
     if (formData.password !== formData.confirmPassword) {
       errors.confirmPassword = "Passwords do not match";
     }
-
     if (!formData.age) errors.age = "Age is required";
-
     if (!formData.phone) errors.phone = "Phone number is required";
     else if (!phoneRegex.test(formData.phone))
       errors.phone = "Phone number is invalid";
@@ -76,14 +72,14 @@ const Registration = () => {
         alert("Registration completed successfully!");
         navigate("/login");
       })
-      .catch(() => {}); // Register səhvi artıq registerError ilə handle olunur
+      .catch(() => {});
   };
 
   return (
     <div className={styles.formContainer}>
-      <img src={Image} className={styles.image} />
+      <LeafBackground />
       <form className={styles.form} onSubmit={handleRegister}>
-      <h2>Registration</h2>
+        <h2>Registration</h2>
         <input
           className={styles.input}
           name="username"

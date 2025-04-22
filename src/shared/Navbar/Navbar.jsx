@@ -60,7 +60,7 @@ const Navbar = () => {
           className="fa-solid fa-circle-user"
           style={{ color: "black", fontSize: "20px" }}
         >
-          <span className={styles.name}>&nbsp;{user ? user.username : ""}</span>
+          <span className={styles.name}>&nbsp;{user ? user.username : "........."}</span>
         </i>
       </div>
     </div>
