@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
 import {
   FaBoxOpen,
@@ -9,10 +9,18 @@ import {
   FaUsers,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/auth/authSlice";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
 
   return (
     <div className={styles.dashboardContainer}>
@@ -79,13 +87,16 @@ const Dashboard = () => {
             </div>
           </Link>
 
-          <Link to="/logout" className={`${styles.card} ${styles.logout}`}>
+          <button
+            className={`${styles.card} ${styles.logout}`}
+            onClick={handleLogout}
+          >
             <FaSignOutAlt className={styles.icon} />
             <div>
-              <h3>Logout</h3>
-              <p>Securely leave the admin panel.</p>
+              <h3 style={{ marginLeft: "-140px" }}>Logout</h3>
+              <p>Leave the admin panel securely.</p>
             </div>
-          </Link>
+          </button>
         </div>
       )}
     </div>
