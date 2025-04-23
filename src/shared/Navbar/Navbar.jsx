@@ -47,7 +47,7 @@ const Navbar = () => {
           Login
         </Link>
         <Link
-          to="/dashboard"
+          to={"/dashboard"}
           className={`${styles.link} ${
             location.pathname === "/dashboard" ? styles.active : ""
           }`}
