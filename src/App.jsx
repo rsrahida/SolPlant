@@ -6,6 +6,9 @@ import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import Navbar from "./shared/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
+import AddProductsPage from "./pages/AddProductsPage";
+import ManageProductsPage from "./pages/ManageProductsPage";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const App = () => {
   return (
@@ -17,7 +20,14 @@ const App = () => {
           <Route path="/products" element={<ProductsPage />}></Route>
           <Route path="/registration" element={<RegistrationPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/dashboard" element={<DashboardPage />}></Route>
+          <Route element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+          </Route>
+          <Route path="/products/add" element={<AddProductsPage />}></Route>
+          <Route
+            path="/products/manage"
+            element={<ManageProductsPage />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>

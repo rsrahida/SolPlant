@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../features/auth/authSlice";
 import styles from "./Login.module.css";
 import LeafBackground from "../../components/Background/LeafBackground";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { loading, loginError } = useSelector((state) => state.auth); 
+  const navigate = useNavigate();
+  const { loading, loginError } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
@@ -33,6 +35,7 @@ const Login = () => {
       .then(() => {
         setFormData({ email: "", password: "" });
         alert("Logged in successfully!");
+        navigate("/dashboard");
       })
       .catch(() => {});
   };
