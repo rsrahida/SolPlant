@@ -64,7 +64,6 @@
 .navbarEnd {
   display: flex;
   align-items: center;
-  padding-right: 70px;
 }
 
 .navbarEnd i {

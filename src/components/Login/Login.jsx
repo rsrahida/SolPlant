@@ -6,7 +6,7 @@ import LeafBackground from "../../components/Background/LeafBackground";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { loading, loginError } = useSelector((state) => state.auth); // loginError
+  const { loading, loginError } = useSelector((state) => state.auth); 
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
