@@ -192,7 +192,7 @@ const Products = () => {
                 className={styles.productImage}
               />
               <h3>{p.title}</h3>
-              <p>${p.price}</p>
+              <p>{p.price} $</p>
               <p>
                 {p.category} | {p.sunlight} | {p.size}
               </p>

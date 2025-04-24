@@ -55,7 +55,7 @@ const Dashboard = () => {
             </div>
           </Link>
 
-          <Link to="/dashboard/add" className={styles.card}>
+          <Link to="/products/addproducts" className={styles.card}>
             <FaPlus className={styles.icon} />
             <div>
               <h3>Add New Product</h3>

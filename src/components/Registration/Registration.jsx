@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../features/auth/authSlice";
 import styles from "./Registration.module.css";
 import LeafBackground from "../../components/Background/LeafBackground";
+import Swal from "sweetalert2";
 
 const Registration = () => {
   const dispatch = useDispatch();
@@ -69,8 +70,13 @@ const Registration = () => {
           age: "",
           phone: "",
         });
-        alert("Registration completed successfully!");
-        navigate("/login");
+        Swal.fire({
+          title: "Good job!",
+          text: "Registration completed successfully!",
+          icon: "success",
+        }).then(() => {
+          navigate("/login");
+        });
       })
       .catch(() => {});
   };

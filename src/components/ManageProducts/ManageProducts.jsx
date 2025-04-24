@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../lib/client";
 import styles from "./ManageProducts.module.css";
+import Swal from "sweetalert2";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
@@ -26,6 +27,11 @@ const ManageProducts = () => {
           "An error occurred while loading products:",
           error.message
         );
+        Swal.fire({
+          title: "Error",
+          text: "An error occurred while loading products.",
+          icon: "error",
+        });
       }
     };
     fetchProducts();
@@ -74,22 +80,48 @@ const ManageProducts = () => {
         prev.map((p) => (p.id === editingId ? { ...p, ...updateData } : p))
       );
       handleCancel();
-      alert("Product successfully saved!");
+      Swal.fire({
+        title: "Success!",
+        text: "Product successfully saved!",
+        icon: "success",
+      });
     } catch (error) {
       console.error("Error saving product:", error.message);
+      Swal.fire({
+        title: "Error",
+        text: "An error occurred while saving the product.",
+        icon: "error",
+      });
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this product?"))
-      return;
-    try {
-      const { error } = await supabase.from("products").delete().eq("id", id);
-      if (error) throw error;
-      setProducts((prev) => prev.filter((p) => p.id !== id));
-      alert("Product successfully deleted!");
-    } catch (error) {
-      console.error("Error deleting product:", error.message);
+    const confirmDelete = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, keep it",
+    });
+    if (confirmDelete.isConfirmed) {
+      try {
+        const { error } = await supabase.from("products").delete().eq("id", id);
+        if (error) throw error;
+        setProducts((prev) => prev.filter((p) => p.id !== id));
+        Swal.fire({
+          title: "Deleted!",
+          text: "Product successfully deleted!",
+          icon: "success",
+        });
+      } catch (error) {
+        console.error("Error deleting product:", error.message);
+        Swal.fire({
+          title: "Error",
+          text: "An error occurred while deleting the product.",
+          icon: "error",
+        });
+      }
     }
   };
 

@@ -4,6 +4,7 @@ import { loginUser } from "../../features/auth/authSlice";
 import styles from "./Login.module.css";
 import LeafBackground from "../../components/Background/LeafBackground";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -34,8 +35,13 @@ const Login = () => {
       .unwrap()
       .then(() => {
         setFormData({ email: "", password: "" });
-        alert("Logged in successfully!");
-        navigate("/dashboard");
+        Swal.fire({
+          title: "Good job!",
+          text: " Logged in successfully!",
+          icon: "success",
+        }).then(() => {
+          navigate("/dashboard");
+        });
       })
       .catch(() => {});
   };
