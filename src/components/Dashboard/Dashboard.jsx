@@ -63,19 +63,11 @@ const Dashboard = () => {
             </div>
           </Link>
 
-          <Link to="/dashboard/messages" className={styles.card}>
-            <FaEnvelope className={styles.icon} />
-            <div>
-              <h3>Messages</h3>
-              <p>Read feedback and messages from users.</p>
-            </div>
-          </Link>
-
-          <Link to="/dashboard/settings" className={styles.card}>
+          <Link to="/dashboard/dashboardchart" className={styles.card}>
             <FaCogs className={styles.icon} />
             <div>
-              <h3>Site Settings</h3>
-              <p>Update your site's configuration.</p>
+              <h3>Analytics</h3>
+              <p>View your weekly product stats.</p>
             </div>
           </Link>
 
