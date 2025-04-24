@@ -10,6 +10,7 @@ import AddProductsPage from "./pages/AddProductsPage";
 import ManageProductsPage from "./pages/ManageProductsPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import DashboardChartPage from "./pages/DashboardChartPage";
+import ManageUsersPage from "./pages/ManageUsersPage";
 
 const App = () => {
   return (
@@ -34,6 +35,10 @@ const App = () => {
             <Route
               path="/dashboard/dashboardchart"
               element={<DashboardChartPage />}
+            ></Route>
+            <Route
+              path="/dashboard/manageusers"
+              element={<ManageUsersPage />}
             ></Route>
           </Route>
         </Routes>

@@ -1,0 +1,107 @@
+.generalContainer {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+ padding-top: 20px;
+  background: linear-gradient(to bottom, rgb(9, 19, 0), rgb(3, 75, 3));
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  color: #2e7d32;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+th {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.editBtn {
+  background: #a5d6a7;
+  color: #1b5e20;
+}
+.editBtn:hover {
+  background: #81c784;
+}
+
+.deleteBtn {
+  background: #ffcdd2;
+  color: #c62828;
+}
+.deleteBtn:hover {
+  background: #ef9a9a;
+}
+
+.saveBtn {
+  background: #4caf50;
+  color: #fff;
+}
+.saveBtn:hover {
+  background: #45a049;
+}
+
+.cancelBtn {
+  background: #ccc;
+  color: #333;
+}
+.cancelBtn:hover {
+  background: #b3b3b3;
+}
+
+.addForm {
+  margin-bottom: 2rem;
+  display: grid;
+  gap: 0.5rem;
+  background: #f1f1f1;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.addForm input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

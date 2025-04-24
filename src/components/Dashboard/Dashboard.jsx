@@ -71,7 +71,7 @@ const Dashboard = () => {
             </div>
           </Link>
 
-          <Link to="/dashboard/users" className={styles.card}>
+          <Link to="/dashboard/manageusers" className={styles.card}>
             <FaUsers className={styles.icon} />
             <div>
               <h3>Manage Users</h3>
