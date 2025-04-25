@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Popup.module.css";
 import { useDispatch } from "react-redux";
 import { addToWishlist } from "../../features/wishlist/wishlistSlice";
+import { addToBasket } from "../../features/basket/basketSlice";
 import Swal from "sweetalert2";
 
 const Popup = ({ product, onClose }) => {
@@ -14,6 +15,20 @@ const Popup = ({ product, onClose }) => {
       icon: "success",
       title: "Added to Wishlist",
       text: `${product.title} has been added to your wishlist!`,
+      confirmButtonText: "Great!",
+      timer: 1000,
+      showConfirmButton: true,
+      timerProgressBar: true,
+    });
+  };
+
+  const handleAddToBasket = () => {
+    dispatch(addToBasket(product)); 
+    onClose();
+    Swal.fire({
+      icon: "success",
+      title: "Added to Basket",
+      text: `${product.title} has been added to your basket!`,
       confirmButtonText: "Great!",
       timer: 1000,
       showConfirmButton: true,
@@ -41,7 +56,11 @@ const Popup = ({ product, onClose }) => {
           Category: {product.category} | Sunlight: {product.sunlight} | Size:{" "}
           {product.size}
         </p>
-        <button type="submit" className={styles.basketButton}>
+        <button
+          type="submit"
+          className={styles.basketButton}
+          onClick={handleAddToBasket} 
+        >
           Add to Basket
         </button>
         <button

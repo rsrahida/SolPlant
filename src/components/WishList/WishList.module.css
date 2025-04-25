@@ -83,7 +83,7 @@
 }
 
 .notFoundText {
-  color: white;
+  color: rgb(255, 0, 0);
   font-size: 1.5rem;
   font-weight: 600;
   margin-top: 40px;

@@ -39,6 +39,7 @@ const Login = () => {
           title: "Good job!",
           text: " Logged in successfully!",
           icon: "success",
+          timer: 1500,
         }).then(() => {
           navigate("/dashboard");
         });

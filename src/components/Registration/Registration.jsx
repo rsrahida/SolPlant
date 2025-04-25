@@ -74,6 +74,7 @@ const Registration = () => {
           title: "Good job!",
           text: "Registration completed successfully!",
           icon: "success",
+          timer: 1500,
         }).then(() => {
           navigate("/login");
         });

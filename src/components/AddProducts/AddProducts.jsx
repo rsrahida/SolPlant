@@ -34,7 +34,7 @@ const AddProducts = () => {
         icon: "success",
         title: "Product added successfully!",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1500,
       });
       setForm({
         image: "",

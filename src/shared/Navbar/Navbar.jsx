@@ -68,15 +68,17 @@ const Navbar = () => {
             style={{ color: "#000000", fontSize: "20px", marginLeft: "8px" }}
           ></i>
         </Link>
-
-        <i
-          className="fa-solid fa-circle-user"
-          style={{ color: "black", fontSize: "20px", marginLeft: "8px" }}
-        >
-          <span className={styles.name}>
-            &nbsp;{user ? user.username : "........."}
-          </span>
-        </i>
+        <Link to="/dashboard" className={styles.basket}>
+          {" "}
+          <i
+            className="fa-solid fa-circle-user"
+            style={{ color: "black", fontSize: "20px", marginLeft: "8px" }}
+          >
+            <span className={styles.name}>
+              &nbsp;{user ? user.username : "........."}
+            </span>
+          </i>
+        </Link>
       </div>
     </div>
   );
