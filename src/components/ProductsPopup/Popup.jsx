@@ -1,8 +1,25 @@
 import React from "react";
 import styles from "./Popup.module.css";
+import { useDispatch } from "react-redux";
+import { addToWishlist } from "../../features/wishlist/wishlistSlice";
+import Swal from "sweetalert2";
 
 const Popup = ({ product, onClose }) => {
-  if (!product) return null;
+  const dispatch = useDispatch();
+
+  const handleAddToWishlist = () => {
+    dispatch(addToWishlist(product));
+    onClose();
+    Swal.fire({
+      icon: "success",
+      title: "Added to Wishlist",
+      text: `${product.title} has been added to your wishlist!`,
+      confirmButtonText: "Great!",
+      timer: 1000,
+      showConfirmButton: true,
+      timerProgressBar: true,
+    });
+  };
 
   return (
     <div className={styles.popupOverlay} onClick={onClose}>
@@ -24,6 +41,16 @@ const Popup = ({ product, onClose }) => {
           Category: {product.category} | Sunlight: {product.sunlight} | Size:{" "}
           {product.size}
         </p>
+        <button type="submit" className={styles.basketButton}>
+          Add to Basket
+        </button>
+        <button
+          type="submit"
+          className={styles.wishButton}
+          onClick={handleAddToWishlist}
+        >
+          Add to Wishlist
+        </button>
       </div>
     </div>
   );

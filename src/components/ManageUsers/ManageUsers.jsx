@@ -157,13 +157,10 @@ const ManageUsers = () => {
 
   return (
     <div className={styles.generalContainer}>
-      {" "}
       <div className={styles.container}>
         <h2 className={styles.title}>Manage Users</h2>
-
         <div className={styles.addForm}>
           <h3>Add New User</h3>
-
           <input
             name="username"
             placeholder="Username"

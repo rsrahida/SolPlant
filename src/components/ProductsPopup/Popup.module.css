@@ -31,8 +31,8 @@
 
 .closeButton {
   position: absolute;
-  top: 7px;
-  right: 13px;
+  top: 2px;
+  right: 2px;
   background: transparent;
   border: none;
   font-size: 28px;
@@ -96,4 +96,34 @@
     transform: translateY(0) scale(1);
     opacity: 1;
   }
+}
+
+.basketButton,
+.wishButton {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 10px 8px;
+  backdrop-filter: blur(10px);
+  background: rgba(76, 175, 80, 0.3);
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.basketButton:hover {
+  background: rgba(76, 175, 80, 0.6);
+  transform: scale(1.05);
+}
+
+.wishButton {
+  background: rgba(255, 193, 7, 0.3);
+}
+
+.wishButton:hover {
+  background: rgba(255, 193, 7, 0.6);
+  transform: scale(1.05);
 }

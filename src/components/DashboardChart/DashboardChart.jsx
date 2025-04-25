@@ -1,27 +1,29 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
+import { supabase } from "../../lib/client";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   BarElement,
   LineElement,
+  PointElement,
   ArcElement,
   Tooltip,
   Legend,
 } from "chart.js";
-import { supabase } from "../../lib/client";
-import styles from "./DashboardChart.module.css";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
   LineElement,
+  PointElement,
   ArcElement,
   Tooltip,
   Legend
 );
+import styles from "./DashboardChart.module.css";
 
 const DashboardChart = () => {
   const chartRef = useRef(null);

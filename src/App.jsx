@@ -11,6 +11,8 @@ import ManageProductsPage from "./pages/ManageProductsPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import DashboardChartPage from "./pages/DashboardChartPage";
 import ManageUsersPage from "./pages/ManageUsersPage";
+import BasketPage from "./pages/BasketPage";
+import WishListPage from "./pages/WishListPage";
 
 const App = () => {
   return (
@@ -41,6 +43,8 @@ const App = () => {
               element={<ManageUsersPage />}
             ></Route>
           </Route>
+          <Route path="/basket" element={<BasketPage />}></Route>
+          <Route path="/wishlist" element={<WishListPage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

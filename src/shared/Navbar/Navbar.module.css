@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px 30px;
-  background-color: #00984c;
+  background-color: #00d36a;
   box-shadow: 0 2px 8px rgba(1, 43, 15, 0.516);
 }
 
@@ -76,9 +76,7 @@
   color: #000000;
 }
 
-.name{
+.name {
   color: #002915;
   font-size: 18px;
-  
-
 }
