@@ -1,6 +1,6 @@
 .container {
   padding: 2rem;
-  background: #f0f4f2;
+  background: #f0f4f255;
   min-height: 100vh;
   background: linear-gradient(to bottom, rgb(9, 19, 0), rgb(3, 75, 3));
 }
@@ -19,7 +19,7 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
+  background-color: #ffffffcf;
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgb(12, 131, 18);
